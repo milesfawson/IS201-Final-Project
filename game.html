@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composer Birth Year Guessing Game</title>
+    <style>
+        /* Inline CSS */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #game {
+            margin-top: 20px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 200px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guess the Composer's Birth Year!</h1>
+    <div id="game">
+        <p id="composerName">Composer Name Here</p>
+        <input type="number" id="yearGuess" placeholder="Enter birth year">
+        <button onclick="submitGuess()">Guess</button>
+        <p id="feedback"></p>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <script>
+        // Inline JavaScript
+        const composers = [
+            { name: "Ludwig van Beethoven", year: 1770 },
+            { name: "Wolfgang Amadeus Mozart", year: 1756 },
+            { name: "Johann Sebastian Bach", year: 1685 },
+            { name: "Frédéric Chopin", year: 1810 },
+            { name: "Johannes Brahms", year: 1833 },
+            { name: "Richard Wagner", year: 1813 },
+            { name: "Claude Debussy", year: 1862 },
+            { name: "Joseph Haydn", year: 1732 },
+            { name: "Antonio Vivaldi", year: 1678 },
+            { name: "Igor Stravinsky", year: 1882 },
+            { name: "Gustav Mahler", year: 1860 },
+            { name: "Sergei Rachmaninoff", year: 1873 },
+            { name: "Robert Schumann", year: 1810 },
+            { name: "Georg Friedrich Händel", year: 1685 },
+            { name: "Franz Schubert", year: 1797 },
+            { name: "Giuseppe Verdi", year: 1813 },
+            { name: "Dmitri Shostakovich", year: 1906 },
+            { name: "Jean Sibelius", year: 1865 },
+            { name: "Philip Glass", year: 1937 },
+            { name: "Leonard Bernstein", year: 1918 }
+        ];
+
+        let score = 0;
+
+        function getRandomComposer() {
+            return composers[Math.floor(Math.random() * composers.length)];
+        }
+
+        function submitGuess() {
+            const userGuess = document.getElementById('yearGuess').value;
+            const composer = document.getElementById('composerName').textContent;
+            const correctYear = composers.find(comp => comp.name === composer).year;
+
+            if (parseInt(userGuess) === correctYear) {
+                score++;
+                document.getElementById('feedback').textContent = "Correct!";
+            } else {
+                document.getElementById('feedback').textContent = "Wrong! The correct year was " + correctYear;
+            }
+
+            document.getElementById('score').textContent = score;
+
+            if (score >= 5) {
+                document.getElementById('feedback').textContent = "Congratulations! You won!";
+                // Optionally reset the game or disable input
+            } else {
+                updateGame();
+            }
+        }
+
+        function updateGame() {
+            const composer = getRandomComposer();
+            document.getElementById('composerName').textContent = composer.name;
+            document.getElementById('yearGuess').value = ''; // Clear the input field
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateGame(); // Initialize the first composer when the page loads
+        });
+    </script>
+
+    <p><a href="index.html">Back to Home</a></p>
+
+</body>
+</html>

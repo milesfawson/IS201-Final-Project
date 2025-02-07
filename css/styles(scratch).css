@@ -1,0 +1,45 @@
+body {
+    background: linear-gradient(to right, #5fffe4, #aad5eb);
+    font-family: 'Tahoma', sans-serif;
+    color: #000000;
+}
+
+h2 {
+    font-weight: bold;
+    font-family: 'Garamond', serif;
+    text-align: center;
+}
+
+a {
+    color: #0b004b;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #200202
+}
+
+ol {
+    font-weight: bolder;
+}
+
+ul {
+    font-weight: normal;
+}
+
+.ital {
+    font-style: italic;
+}
+
+div {
+    margin: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.tableauViz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
